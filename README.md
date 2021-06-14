@@ -6,7 +6,7 @@ Installation
 
 You can install it using pip from the repository as:
 
-    pip install git+https://github.com/ByteBaker/indian-names
+    pip install indian-names
 
 
 Usage
