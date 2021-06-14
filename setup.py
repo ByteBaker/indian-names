@@ -11,6 +11,7 @@ setup(
     url="https://github.com/ByteBaker/indian-names",
     description="Generate random names of Indian origin",
     long_description=readme,
+    long_description_content_type='text/markdown',
     license='BSD 3-Clause License',
     packages=find_packages(),
     include_package_data=True,
