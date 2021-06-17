@@ -6,7 +6,7 @@ with open('README.md') as readme_file:
 
 setup(
     name='indian-names',
-    version='0.1',
+    version='0.2',
     author='ByteBaker',
     url="https://github.com/ByteBaker/indian-names",
     description="Generate random names of Indian origin",
