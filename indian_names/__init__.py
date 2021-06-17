@@ -9,7 +9,7 @@ import random
 
 
 __title__ = 'indian_names'
-__version__ = '0.1'
+__version__ = '0.2'
 __author__ = 'ByteBaker'
 __license__ = 'BSD 3-Clause License'
 
@@ -33,15 +33,14 @@ def _get_name(filename: str):
     Internal function. Not to be imported.
     """
 
-    # Write proper logic here.
     with open(filename) as names:
         try:
             total_names = int(next(names))
-            lines_to_skip = random.randint(1, total_names)
+            lines_to_skip = random.randint(0, total_names - 1)
 
             # Skip 'lines_to_skip'
             for _ in range(1, lines_to_skip):
-                names.readline()
+                next(names)
             
             # Last name that remains after 'skip_lines'
             name, _ = next(names).split()
@@ -76,9 +75,10 @@ def get_full_name(gender: Literal['male', 'female'] = None):
     """
     Generate a random full name for the 'gender' given.
     """
-
-    last_name = get_last_name()
+    # Getting first name before last saves wasting
+    # a read operation if 'gender' value is invalid
     first_name = get_first_name(gender)
+    last_name = get_last_name()
 
     # Make sure last name and first name aren't the same (e.g. Kumar Kumar)
     while first_name == last_name:
