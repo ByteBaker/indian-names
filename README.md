@@ -1,5 +1,8 @@
-# indian-names
+# indian-names <small> (v0.2) </small> 
 Python module to generate random names of Indian origin.
+
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indian-names?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/indian-names?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2022?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indian-names?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indian-names?label=Status)
+
 
 Installation
 ------------
@@ -27,7 +30,6 @@ To use the script from the command line:
 Here are examples of all current features:
 
 ```
-
     >>> import indian_names
     >>> indian_names.get_full_name()
     'Bhawana Joshi'
@@ -41,7 +43,7 @@ Here are examples of all current features:
     'Tripathi'
 ```
 
-The module can currently generate 400+ first names each for male and female, and 200+ last names. Overall 200,000+ full names can be generated.
+The module can currently generate 550+ first names for male and female each, and 350+ last names. Overall 400,000+ full names can be generated.
 
 ### TODO (Future):
 - Increase the number of names possible.
