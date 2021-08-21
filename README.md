@@ -32,7 +32,7 @@ Here are examples of all current features:
 ```
     >>> import indian_names
     >>> indian_names.get_full_name()
-    'Bhawana Joshi'
+    'Nisha Asthana'
     >>> indian_names.get_full_name(gender='male')
     'Manish Gupta'
     >>> indian_names.get_first_name()

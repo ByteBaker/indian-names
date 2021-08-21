@@ -14,7 +14,7 @@ __author__ = 'ByteBaker'
 __license__ = 'BSD 3-Clause License'
 
 
-def _path_to(file):
+def _path_to(file: str):
     return abspath(join(dirname(__file__), file))
 
 
@@ -25,7 +25,7 @@ FILES: Dict[str, str] = {
 }
 
 
-def _get_name(filename: str):
+def _get_name(filename: str) -> str:
     """
     Function returns a random name (first or last)
     from the filename given as the argument.
@@ -33,17 +33,21 @@ def _get_name(filename: str):
     Internal function. Not to be imported.
     """
 
+    LINE_WIDTH: int = 20 + 1    # 1 for \n
+
     with open(filename) as names:
         try:
             total_names = int(next(names))
-            lines_to_skip = random.randint(0, total_names - 1)
+            nth_name_to_read: int = random.randint(1, total_names)
 
-            # Skip 'lines_to_skip'
-            for _ in range(1, lines_to_skip):
-                next(names)
-            
-            # Last name that remains after 'skip_lines'
-            name, _ = next(names).split()
+            # Here 'nth_name_to_read' lines are skipped that include
+            # the first line (with no of lines) and n-1 names
+            # Next read would always be the desired name
+            bytes_to_seek: int = LINE_WIDTH * nth_name_to_read
+
+            _ = names.seek(bytes_to_seek)   # Now skipped n - 1 names
+
+            name: str = next(names).strip()
             return name
 
         except StopIteration:
@@ -51,7 +55,7 @@ def _get_name(filename: str):
             return ''
 
 
-def get_first_name(gender: Literal['male', 'female'] = None):
+def get_first_name(gender: Literal['male', 'female'] = None) -> str:
     """
     Generate a random first name for the 'gender' given.
     """
@@ -59,19 +63,19 @@ def get_first_name(gender: Literal['male', 'female'] = None):
         gender = random.choice(('male', 'female'))
     if gender not in ('male', 'female'):
         errmsg = f"Invalid value '{gender}'. Only 'male' & 'female' supported for 'gender'"
-        raise TypeError(errmsg)
+        raise ValueError(errmsg)
 
     return _get_name(FILES[f'first:{gender}']).title()
 
 
-def get_last_name():
+def get_last_name() -> str:
     """
     Generate a random last name.
     """
     return _get_name(FILES['last']).title()
 
 
-def get_full_name(gender: Literal['male', 'female'] = None):
+def get_full_name(gender: Literal['male', 'female'] = None) -> str:
     """
     Generate a random full name for the 'gender' given.
     """
